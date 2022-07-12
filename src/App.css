@@ -49,6 +49,22 @@ select {
   width: 50%;
 }
 
+.w-100 {
+  width: 100%;
+}
+
 button {
   width: 100%;
+}
+
+.f-1 {
+  flex: 1;
+}
+
+.f-2 {
+  flex: 2;
+}
+
+.fd-col {
+  flex-direction: column;
 }

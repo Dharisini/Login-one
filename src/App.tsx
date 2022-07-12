@@ -36,36 +36,54 @@ export default function App() {
 
   return (
     <div className="pa-16">
-      <form onSubmit={handleSubmit}>
-        <Input name="Name" value={name} onChange={changeName} />
-        {/* <Input name ="Gender" type="radio" value="Male" />  */},
-        <p> Gender</p>
-        <div id="radiooptions" className="d-flex h-center pa-16">
-          <input
-            type="radio"
-            value="Male"
-            checked={gender === "male"}
-            onChange={handleChange}
-          />{" "}
-          Male{" "}
-          <input
-            type="radio"
-            value="female"
-            checked={gender === "female"}
-            onChange={handleChange}
-          />{" "}
-          female{" "}
+      <div className="d-flex v-center h-center">
+        <div className="w-100">
+          <h2>Fill the Form!</h2>
+          <div className="d-flex w-100">
+            <form className="f-1" onSubmit={handleSubmit}>
+              <Input name="Name" value={name} onChange={changeName} />
+              <Input name="Age" value={age} onChange={changeAge} />
+              <span className="w-50 pa-16 mb-16">Gender</span>
+              {/* <Input name ="Gender" type="radio" value="Male" />  */}
+              <div id="radio" className="d-flex fd-col">
+                <input
+                  type="radio"
+                  value="male"
+                  checked={gender === "male"}
+                  onChange={handleChange}
+                />
+                Male
+                <input
+                  type="radio"
+                  value="female"
+                  checked={gender === "female"}
+                  onChange={handleChange}
+                />
+                female
+              </div>
+              {/* <div>
+            <button type="reset" id="resetFunction" onClick={resetRadioState}
+          </div> */}
+
+              <Select
+                name="Favourite Color"
+                value={color}
+                onChange={changeColor}
+              />
+              <button type="submit" className="btn-primary mb-16">
+                Submit
+              </button>
+              <button className="btn-secondary">Clear</button>
+            </form>
+            <div className="w-50 pa-16 mb-16 f-1">
+              <p>
+                <b>{name}</b> is <b>{age}</b> years old and she/he likes the
+                colour <b>{color}</b>
+              </p>
+            </div>
+          </div>
         </div>
-        {/* <div>
-          <button type="reset" id="resetFunction" onClick={resetRadioState} />
-        </div> */}
-        <Input name="Age" value={age} onChange={changeAge} />
-        <Select name="Favourite Color" value={color} onChange={changeColor} />
-        <button type="submit" className="btn-primary mb-16">
-          Submit
-        </button>
-        <button className="btn-secondary">Clear</button>
-      </form>
+      </div>
     </div>
   );
 }
