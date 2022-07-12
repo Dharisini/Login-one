@@ -5,6 +5,7 @@ export default function App() {
   const [name, setName] = React.useState<string>("");
   const [age, setAge] = React.useState<string | undefined>("");
   const [color, setColor] = React.useState<string | undefined>("red");
+  const [gender, setGender] = React.useState("male");
 
   const changeName = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -23,10 +24,41 @@ export default function App() {
     console.log(name, age, color);
   };
 
+  const handleChange = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setGender(event.target.value);
+  };
+
+  const resetRadioState = () => {
+    setGender("");
+  };
+
   return (
     <div className="pa-16">
       <form onSubmit={handleSubmit}>
         <Input name="Name" value={name} onChange={changeName} />
+        {/* <Input name ="Gender" type="radio" value="Male" />  */},
+        <p> Gender</p>
+        <div id="radiooptions" className="d-flex h-center pa-16">
+          <input
+            type="radio"
+            value="Male"
+            checked={gender === "male"}
+            onChange={handleChange}
+          />{" "}
+          Male{" "}
+          <input
+            type="radio"
+            value="female"
+            checked={gender === "female"}
+            onChange={handleChange}
+          />{" "}
+          female{" "}
+        </div>
+        {/* <div>
+          <button type="reset" id="resetFunction" onClick={resetRadioState} />
+        </div> */}
         <Input name="Age" value={age} onChange={changeAge} />
         <Select name="Favourite Color" value={color} onChange={changeColor} />
         <button type="submit" className="btn-primary mb-16">
